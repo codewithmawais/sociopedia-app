@@ -1,13 +1,18 @@
+@import "../../style.scss";
+
 .navbar {
+  @include themify($themes) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     height: 50px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid themed("border");
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: themed("bg");
+    color:themed("textColor");
+    z-index: 999;
 
     .left {
       display: flex;
@@ -17,7 +22,7 @@
       span {
         font-weight: bold;
         font-size: 20px;
-        color: darkblue
+        color: themed("logo");
       }
     }
 
@@ -25,27 +30,44 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        border: 1px solid lightgray;
+        border: 1px solid themed("border");
         border-radius: 5px;
         padding: 5px;
 
         input {
-            border: none;
-            width: 500px;
-            background-color: transparent;
+          border: none;
+          width: 500px;
+          background-color: transparent;
+          color: themed("textColor");
+
+          @include mobile{
+            display: none;
+          }
+
+          @include tablet{
+            width: 200px;
+          }
         }
-    }
+      }
 
     .right {
       display: flex;
       align-items: center;
       gap: 20px;
 
+      @include mobile{
+        display: none;
+      }
+
       .user {
         display: flex;
         align-items: center;
         gap: 10px;
         font-weight: 500;
+
+        @include tablet{
+          display: none;
+        }
 
         img {
           width: 30px;
@@ -55,4 +77,5 @@
         }
       }
     }
+  }
 }
