@@ -7,6 +7,7 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import Comments from "components/comments/Comments";
+import moment from "moment";
 
 const Post = ({ post }) => {
     const [commentOpen, setCommentOpen] = useState(false);
@@ -17,7 +18,7 @@ const Post = ({ post }) => {
             <div className="container">
                 <div className="user">
                     <div className="userInfo">
-                        <img src={post.profilePic} alt="" />
+                        <img src={"./upload/" + post.profilePic} alt="" />
                         <div className="details">
                             <Link
                                 to={`/profile/${post.userId}`}
@@ -25,14 +26,14 @@ const Post = ({ post }) => {
                             >
                                 <span className="name">{post.name}</span>
                             </Link>
-                            <span className="date">1 min ago</span>
+                            <span className="date">{moment(post.createdAt).fromNow()}</span>
                         </div>
                     </div>
                     <MoreHorizIcon />
                 </div>
                 <div className="content">
                     <p>{post.desc}</p>
-                    <img src={post.img} alt="" />
+                    <img src={"./upload/" + post.img} alt="" />
                 </div>
                 <div className="info">
                     <div className="mainItem">

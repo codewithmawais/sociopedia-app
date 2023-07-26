@@ -1,37 +1,25 @@
 import "./posts.scss";
 import Post from "components/post/Post";
+import { useQuery } from 'react-query'
+import { makeRequest } from "../../axios";
 
 const Posts = () => {
-    // TEMPORARY DATA
-
-    const posts = [
-        {
-            id: 1,
-            name: "John Doe",
-            userId: 1,
-            profilePic:
-                "https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600",
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-            img: "https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        },
-        {
-            id: 2,
-            name: "John Doe",
-            userId: 2,
-            profilePic:
-                "https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600",
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-        }
-    ];
+    const { isLoading, error, data } = useQuery(["posts"], () =>
+        makeRequest.get("/posts").then((res) => {
+            return res.data;
+        })
+    );
 
     return (
         <div className="posts">
-            {posts.map(post => (
-                <Post post={post} key={post.id} />
-            ))}
+            {error
+                ? "Something went wrong!"
+                : isLoading
+                ? "loading"
+                :  data.map((post) => <Post post={post} key={post.id} />)
+            }
         </div>
-    )
-    
+    );
 };
 
 export default Posts;
