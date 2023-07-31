@@ -14,6 +14,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 
 const Post = ({ post }) => {
+    console.log(JSON.stringify(post));
     const [commentOpen, setCommentOpen] = useState(false);
     const queryClient = useQueryClient();
     const { currentUser } = useContext(AuthContext);
@@ -61,7 +62,7 @@ const Post = ({ post }) => {
                 </div>
                 <div className="content">
                     <p>{post.desc}</p>
-                    <img src={"./upload/" + post.img} alt="" />
+                    <img src={"/upload/" + post.img} alt="" />
                 </div>
                 <div className="info">
                     <div className="mainItem">
