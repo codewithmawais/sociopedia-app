@@ -8,10 +8,38 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import Comments from "components/comments/Comments";
 import moment from "moment";
+import { useQuery, useQueryClient, useMutation } from "react-query";
+import { makeRequest } from "../../axios";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 const Post = ({ post }) => {
     const [commentOpen, setCommentOpen] = useState(false);
-    const liked = true;
+    const queryClient = useQueryClient();
+    const { currentUser } = useContext(AuthContext);
+
+    const { isLoading, error, data } = useQuery(["likes", post.id], () =>
+        makeRequest.get("/likes?postId=" + post.id).then((res) => {
+            return res.data;
+        })
+    );
+
+    const mutation = useMutation(
+        (liked) => {
+            if (liked) return makeRequest.delete("/likes?postId=" + post.id);
+            return makeRequest.post("/likes", { postId: post.id });
+        },
+        {
+            onSuccess: () => {
+                // Invalidate and refetch
+                queryClient.invalidateQueries(["likes"]);
+            },
+        }
+    );
+
+    const handleLike = () => {
+        mutation.mutate(data.includes(currentUser.id));
+    };
 
     return (
         <div className="post">
@@ -38,7 +66,17 @@ const Post = ({ post }) => {
                 <div className="info">
                     <div className="mainItem">
                         <div className="item">
-                            {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
+                            {isLoading ? (
+                                "loading"
+                            ) : data.includes(currentUser.id) ? (
+                                <FavoriteOutlinedIcon
+                                    style={{ color: "red" }}
+                                    onClick={handleLike}
+                                />
+                            ) : (
+                                <FavoriteBorderOutlinedIcon onClick={handleLike} />
+                            )}
+                            {data?.length} Likes
                         </div>
                         <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
                             <TextsmsOutlinedIcon />
