@@ -14,7 +14,6 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 
 const Post = ({ post }) => {
-    console.log(JSON.stringify(post));
     const [commentOpen, setCommentOpen] = useState(false);
     const queryClient = useQueryClient();
     const { currentUser } = useContext(AuthContext);
