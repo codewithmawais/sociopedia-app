@@ -1,4 +1,5 @@
 import "./stories.scss";
+import fakeProfilePic from  "../../assets/unknownProfilePic.jpg";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 
@@ -36,7 +37,7 @@ const Stories = () => {
     return (
         <div className="stories">
             <div className="story">
-                <img src={currentUser.profilePic} alt="" />
+                <img src={currentUser.profilePic ? "/upload/" + currentUser.profilePic : fakeProfilePic} alt="" />
                 <span>{currentUser.name}</span>
                 <button>+</button>
             </div>

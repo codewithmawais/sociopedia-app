@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider,
   Outlet,
+  Navigate
 } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
@@ -38,10 +39,22 @@ function App() {
     )
   };
 
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
+  
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      ),
       children: [
         {
           path: "/",

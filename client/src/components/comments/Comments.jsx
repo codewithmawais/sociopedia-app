@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
 import "./comments.scss";
+import fakeProfilePic from  "../../assets/unknownProfilePic.jpg";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { makeRequest } from "../../axios";
@@ -9,7 +10,7 @@ const Comments = ({ postId }) => {
     const [desc, setDesc] = useState("");
     const { currentUser } = useContext(AuthContext);
 
-    const { isLoading, error, data } = useQuery(["comments"], () =>
+    const { isLoading, error, data } = useQuery(["comments", postId], () =>
         makeRequest.get("/comments?postId=" + postId).then((res) => {
             return res.data;
         })
@@ -34,14 +35,14 @@ const Comments = ({ postId }) => {
         mutation.mutate({ desc, postId });
         setDesc("");
     };
-
+    
     return (
         <div className="comments">
             <div className="write">
-                <img src={"./upload/" + currentUser.profilePic} alt="" />
+                <img src={currentUser.profilePic ? "/upload/" + currentUser.profilePic : fakeProfilePic} alt="" />
                 <input
                     type="text"
-                    placeholder="write a comment"
+                    placeholder="Write a comment..."
                     value={desc}
                     onChange={(e) => setDesc(e.target.value)}
                 />

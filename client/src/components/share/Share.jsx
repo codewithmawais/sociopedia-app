@@ -1,6 +1,7 @@
 import "./share.scss";
 import Image from "../../assets/img.png";
 import Map from "../../assets/map.png";
+import fakeProfilePic from  "../../assets/unknownProfilePic.jpg";
 import Friend from "../../assets/friend.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "context/authContext";
@@ -52,7 +53,7 @@ const Share = () => {
             <div className="container">
                 <div className="top">
                     <div className="left">
-                        <img src={currentUser.profilePic} alt="" />
+                        <img src={currentUser.profilePic ? "/upload/" + currentUser.profilePic : fakeProfilePic} alt="" />
                         <input
                             type="text"
                             placeholder={`What's on your mind ${currentUser.name}?`}

@@ -1,4 +1,5 @@
 import "./post.scss";
+import fakeProfilePic from  "../../assets/unknownProfilePic.jpg";
 import { useState } from "react";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
@@ -19,7 +20,7 @@ const Post = ({ post }) => {
     const queryClient = useQueryClient();
     const { currentUser } = useContext(AuthContext);
 
-    const { isLoading, error, data } = useQuery(["likes", post.id], () =>
+    const { isLoading, data } = useQuery(["likes", post.id], () =>
         makeRequest.get("/likes?postId=" + post.id).then((res) => {
             return res.data;
         })
@@ -63,7 +64,7 @@ const Post = ({ post }) => {
             <div className="container">
                 <div className="user">
                     <div className="userInfo">
-                        <img src={"/upload/" + post.profilePic} alt="" />
+                        <img src={currentUser.profilePic ? "/upload/" + currentUser.profilePic : fakeProfilePic} alt="" />
                         <div className="details">
                             <Link
                                 to={`/profile/${post.userId}`}
@@ -76,7 +77,7 @@ const Post = ({ post }) => {
                     </div>
                     <MoreHorizIcon onClick={() => setMenuOpen(!menuOpen)} />
                     {menuOpen && post.userId === currentUser.id && (
-                        <button onClick={handleDelete}>delete</button>
+                        <button onClick={handleDelete}>Delete</button>
                     )}
                 </div>
                 <div className="content">
@@ -108,7 +109,7 @@ const Post = ({ post }) => {
                         Share
                     </div>
                 </div>
-                {commentOpen && <Comments postId={post.id}/>}
+                {commentOpen && <Comments postId={post.id} />}
             </div>
         </div>
     );

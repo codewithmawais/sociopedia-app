@@ -64,6 +64,8 @@
         align-items: center;
         gap: 10px;
         font-weight: 500;
+        position: relative;
+        cursor: pointer;
 
         @include tablet{
           display: none;
@@ -74,6 +76,17 @@
           height: 30px;
           border-radius: 50%;
           object-fit: cover;
+        }
+
+        button {
+          position: absolute;
+          top: 30px;
+          right: 0;
+          border: none;
+          background-color: #f0544f;
+          padding: 5px;
+          cursor: pointer;
+          color: white;
         }
       }
     }

@@ -7,16 +7,24 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "context/authContext";
+import fakeProfilePic from "../../assets/unknownProfilePic.jpg";
+import { makeRequest } from "../../axios";
 
 const Navbar = () => {
     const { toggle, darkMode } = useContext(DarkModeContext);
+    const navigate = useNavigate();
+    const [ logout, setLogout ] = useState(false);
     const { currentUser } = useContext(AuthContext);
 
-    console.log(currentUser);
+    const handleLogout = () => {
+        makeRequest.post("/auth/logout");
+        localStorage.clear();
+        navigate(0);
+    };
 
     return (
         <div className="navbar">
@@ -40,9 +48,12 @@ const Navbar = () => {
                 <PersonOutlinedIcon />
                 <EmailOutlinedIcon />
                 <NotificationsOutlinedIcon />
-                <div className="user">
-                    <img src="" alt="" />
-                    <span>Hello, Awais</span>
+                <div className="user" onClick={() => setLogout(!logout)}>
+                    <img src={currentUser.profilePic ? "/upload/" + currentUser.profilePic : fakeProfilePic} alt="" />
+                    <span>{currentUser.name}</span>
+                    {logout && (
+                        <button onClick={handleLogout}>Logout</button>
+                    )}
                 </div>
             </div>
         </div>
