@@ -1,4 +1,5 @@
 import "./profile.scss";
+import fakeProfilePic from "../../assets/unknownProfilePic.jpg";
 import FacebookTwoToneIcon from "@mui/icons-material/FacebookTwoTone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -63,58 +64,59 @@ const Profile = () => {
       ) : (
         <>
           <div className="images">
-            <img src={"/upload/" + data.coverPic} alt="" className="cover" />
-            <img src={"/upload/" + data.profilePic} alt="" className="profilePic" />
+            <img src={currentUser.profilePic ? "/upload/" + currentUser.profilePic : fakeProfilePic} alt="" className="cover" />
+            <img src={currentUser.profilePic ? "/upload/" + currentUser.profilePic : fakeProfilePic} alt="" className="profilePic" />
           </div>
           <div className="profileContainer">
             <div className="uInfo">
-              <div className="left">
-                <a href="http://facebook.com">
-                  <FacebookTwoToneIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <InstagramIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <TwitterIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <LinkedInIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <PinterestIcon fontSize="large" />
-                </a>
+              <div className="info">
+                <div className="item">
+                    <EmailOutlinedIcon />
+                    <span>{data.email}</span>
+                </div>
+                <div className="item">
+                  <LanguageIcon />
+                    <span>{data.website}</span>
+                </div>
+                <div className="item">
+                  <PlaceIcon />
+                    <span>{data.city}</span>
+                </div>
               </div>
               <div className="center">
-                <span>{data.name}</span>
-                <div className="info">
-                  <div className="item">
-                    <PlaceIcon />
-                    <span>{data.city}</span>
+                <div className="profileName">
+                  <span>{data.name}</span>
+                  <div>
+                    {rIsLoading ? (
+                      "loading"
+                    ) : userId === currentUser.id ? (
+                      <button onClick={() => setOpenUpdate(true)}>Update</button>
+                    ) : (
+                      <button onClick={handleFollow}>
+                        {relationshipData.includes(currentUser.id)
+                          ? "Following"
+                          : "Follow"}
+                      </button>
+                    )}
                   </div>
-                  <div className="item">
-                    <LanguageIcon />
-                    <span>{data.website}</span>
-                  </div>
-                  {rIsLoading ? (
-                    "loading"
-                  ) : userId === currentUser.id ? (
-                    <button onClick={() => setOpenUpdate(true)}>update</button>
-                  ) : (
-                    <button onClick={handleFollow}>
-                      {relationshipData.includes(currentUser.id)
-                        ? "Following"
-                        : "Follow"}
-                    </button>
-                  )}
                 </div>
               </div>
               <div className="right">
-                <EmailOutlinedIcon />
-                <MoreVertIcon />
+                <a href="http://facebook.com">
+                  <FacebookTwoToneIcon fontSize="large" />
+                </a>
+                <a href="http://instagram.com">
+                  <InstagramIcon fontSize="large" />
+                </a>
+                <a href="http://x.com">
+                  <TwitterIcon fontSize="large" />
+                </a>
+                <a href="http://linkedin.com">
+                  <LinkedInIcon fontSize="large" />
+                </a>
               </div>
             </div>
-            <Posts userId={userId}/>
+            <Posts userId={userId} />
           </div>
         </>
       )}

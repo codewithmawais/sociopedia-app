@@ -23,6 +23,12 @@
         font-weight: bold;
         font-size: 20px;
         color: themed("logo");
+
+        .homeIcon{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
     }
 
@@ -33,6 +39,9 @@
         border: 1px solid themed("border");
         border-radius: 5px;
         padding: 5px;
+        :focus {
+          outline: none;
+        }
 
         input {
           border: none;
@@ -81,12 +90,15 @@
         button {
           position: absolute;
           top: 30px;
-          right: 0;
+          right: 10px;
           border: none;
           background-color: #f0544f;
-          padding: 5px;
+          padding: 8px;
+          font-size: 16px;
+          margin: 2px 2px;
           cursor: pointer;
           color: white;
+          border-radius: 15px;
         }
       }
     }

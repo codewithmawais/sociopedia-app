@@ -32,22 +32,24 @@ const Navbar = () => {
                 <Link to="/" style={{ textDecoration: "none" }}>
                     <span>Sociopedia</span>
                 </Link>
-                <HomeOutlinedIcon />
+                <Link to="/" style={{ textDecoration: "none" }}>
+                    <span><HomeOutlinedIcon className="homeIcon"/></span>
+                </Link>
                 {darkMode ? (
-                    <WbSunnyOutlinedIcon onClick={toggle} />
-                    ) : (
-                    <DarkModeOutlinedIcon onClick={toggle} />
+                    <WbSunnyOutlinedIcon onClick={toggle} style={{cursor: "pointer"}} />
+                    ) : (   
+                    <DarkModeOutlinedIcon onClick={toggle} style={{cursor: "pointer"}} />
                 )}
-                <GridViewOutlinedIcon />
+                <GridViewOutlinedIcon style={{cursor: "pointer"}} />
             </div>
             <div className="search">
-                <SearchOutlinedIcon />
+                <SearchOutlinedIcon style={{cursor: "pointer"}} />
                 <input type="text" placeholder="Search..." />
             </div>
             <div className="right">
-                <PersonOutlinedIcon />
-                <EmailOutlinedIcon />
-                <NotificationsOutlinedIcon />
+                <PersonOutlinedIcon style={{cursor: "pointer"}} />
+                <EmailOutlinedIcon style={{cursor: "pointer"}} />
+                <NotificationsOutlinedIcon style={{cursor: "pointer"}} />
                 <div className="user" onClick={() => setLogout(!logout)}>
                     <img src={currentUser.profilePic ? "/upload/" + currentUser.profilePic : fakeProfilePic} alt="" />
                     <span>{currentUser.name}</span>
