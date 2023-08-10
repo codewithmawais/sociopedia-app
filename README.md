@@ -31,7 +31,7 @@ Sociopedia is a robust social media application that combines the power of React
 1. **Clone the Repository**: Begin by cloning this repository to your local machine using the following command:
 
 ```
-git clone https://github.com/your-username/sociopedia.git
+git clone https://github.com/codewithmawais/sociopedia.git
 ```
 
 2. **Install Dependencies**: Navigate to the project directory and install the required dependencies for both the frontend and backend:
