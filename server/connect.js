@@ -1,4 +1,4 @@
-require("dotenv").config();
+import 'dotenv/config'
 import mysql from "mysql"
 
 const urlDB = process.env.urlDB;
