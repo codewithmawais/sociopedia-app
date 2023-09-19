@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Sociopedia: A Social Media Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sociopedia is a robust social media application that combines the power of React, Node.js (Express.js), and MySQL to deliver a dynamic and engaging online platform. This application draws inspiration from popular social networking platforms like Facebook, while incorporating its own unique set of features to create a tailored user experience.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Personalized Feed**: Stay connected with friends and acquaintances by viewing posts from users you follow and those who follow you in return.
 
-### `npm start`
+- **Content Sharing**: Express yourself through posts that can include both text and images, allowing you to share your thoughts and experiences in a visually appealing manner.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Interactive Engagement**: Interact with posts by liking and commenting on them. Engage in conversations and show your appreciation for others' content.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Post Management**: Take control of your content. Delete your own posts whenever you deem necessary, ensuring that your profile reflects only the content you want.
 
-### `npm test`
+- **Profile Exploration**: Explore profiles of other users to get a better understanding of their connections, interests, and contributions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Profile Customization**: Tailor your profile to reflect your personality and preferences. Update your profile information to keep it current and accurate.
 
-### `npm run build`
+- **Secure Authentication**: Enjoy peace of mind knowing that Sociopedia provides robust user authentication. Register your account securely and log in with confidence.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Frontend**: Developed using React, the frontend offers a responsive and intuitive user interface for seamless navigation and interaction.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Backend**: Built on Node.js with Express.js, the backend facilitates efficient communication between the frontend and the database.
 
-### `npm run eject`
+- **Database**: Utilizes MySQL to store user profiles, posts, interactions, and other essential data, ensuring data integrity and retrieval efficiency.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Clone the Repository**: Begin by cloning this repository to your local machine using the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+git clone https://github.com/codewithmawais/sociopedia.git
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Install Dependencies**: Navigate to the project directory and install the required dependencies for both the frontend and backend:
 
-## Learn More
+```
+cd sociopedia
+cd frontend
+npm install
+cd ../backend
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Database Setup**: Set up your MySQL database and update the database configuration in the `backend/connect.js` file.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Start the Application**: Start both the frontend and backend servers:
 
-### Code Splitting
+- Frontend:
+  ```
+  cd frontend
+  npm start
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Backend:
+  ```
+  cd backend
+  npm start
+  ```
 
-### Analyzing the Bundle Size
+5. **Access the Application**: Open your web browser and navigate to `http://localhost:3000` to access Sociopedia.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+We welcome contributions to enhance Sociopedia. If you find issues or have ideas for improvements, feel free to create a pull request or submit an issue in the repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
+This project is not licensed.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Experience the next generation of social media with Sociopedia. Connect, share, and engage like never before.
