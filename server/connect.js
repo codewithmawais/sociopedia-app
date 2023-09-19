@@ -1,8 +1,6 @@
+require("dotenv").config();
 import mysql from "mysql"
 
-export const db = mysql.createConnection({
-  host:"localhost",
-  user:"root",
-  password:"homeland1998@admin.com",
-  database:"sociopedia"
-})
+const urlDB = process.env.urlDB;
+
+export const db = mysql.createConnection(urlDB);
