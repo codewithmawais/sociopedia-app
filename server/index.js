@@ -10,6 +10,7 @@ import relationshipRoutes from "./routes/relationships.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import multer from "multer";
+import 'dotenv/config'
 
 app.use(express.json());
 app.use(
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 
+const port = process.env.PORT || 3000;
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -53,6 +55,7 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
 app.use("/api/relationships", relationshipRoutes);
 
-app.listen(8800, () => {
+// Listen on `port` and 0.0.0.0
+app.listen(port, "0.0.0.0", function () {
   console.log("API working!");
 });
