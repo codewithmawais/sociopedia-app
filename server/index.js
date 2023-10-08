@@ -14,7 +14,7 @@ import multer from "multer";
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://simple-sociopedia.netlify.app/",
+    origin: "*",
   })
 );
 app.use(cookieParser());
@@ -22,7 +22,7 @@ app.use(cookieParser());
 //middlewares
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", true);
-  res.setHeader("Access-Control-Allow-Origin", "https://simple-sociopedia.netlify.app/"); // the link of my front-end app on Netlify
+  res.setHeader("Access-Control-Allow-Origin", "*"); // the link of my front-end app on Netlify
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
