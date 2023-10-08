@@ -9,7 +9,16 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post("https://sociopedia-app-backend-production.up.railway.app/api/auth/login", inputs, {
+    const res = await axios.post("https://sociopedia-app-backend-production.up.railway.app/api/auth/login", 
+      {
+        crossdomain: true
+      }, 
+      {
+        headers: {
+          'Access-Control-Allow-Origin' : '*',   
+      }
+    },
+    inputs, {
       withCredentials: true,
     });
 
