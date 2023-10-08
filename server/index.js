@@ -11,18 +11,31 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import multer from "multer";
 
-//middlewares
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
+    origin: "https://simple-sociopedia.netlify.app/",
   })
 );
 app.use(cookieParser());
+
+//middlewares
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Origin", "https://simple-sociopedia.netlify.app/"); // the link of my front-end app on Netlify
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE, OPTIONS"
+  );
+  res.setHeader('content-type', 'application/json');
+  next();
+  next();
+});
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
