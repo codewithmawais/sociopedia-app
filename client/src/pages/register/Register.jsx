@@ -20,17 +20,7 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://sociopedia-app-backend-production.up.railway.app/api/auth/register",
-      {
-        crossdomain: true
-      }, 
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      },
-      inputs
-      );
+      await axios.post("https://sociopedia-app-backend-production.up.railway.app/api/auth/register", inputs);
     } catch (err) {
       setErr(err.response.data);
     }
