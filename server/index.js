@@ -22,8 +22,8 @@ app.use(cookieParser());
 
 //middlewares
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Origin", "https://simple-sociopedia.netlify.app"); 
+  res.setHeader('Access-Control-Allow-Origin', 'https://simple-sociopedia.netlify.app');
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
   next();
 });
 
