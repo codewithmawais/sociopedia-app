@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: "https://simple-sociopedia.netlify.app",
+    credentials: true
   })
 );
 app.use(cookieParser());
