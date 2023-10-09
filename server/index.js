@@ -15,7 +15,7 @@ import 'dotenv/config'
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
+    origin: "https://simple-sociopedia.netlify.app",
   })
 );
 app.use(cookieParser());
@@ -23,7 +23,7 @@ app.use(cookieParser());
 //middlewares
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Origin", "*"); 
+  res.header("Access-Control-Allow-Origin", "https://simple-sociopedia.netlify.app"); 
   next();
 });
 
